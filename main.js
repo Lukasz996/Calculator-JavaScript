@@ -11,4 +11,8 @@ const historyItem = document.querySelectorAll('history-item')
 
 let result = ''
 
-operatorsButtons.forEach(button) => button.addEventListener
+operatorsButtons.forEach(button => button.addEventLuistener('click', operate))
+
+equalsButton.addEventListener('click', showResult)
+
+clearButton.addEventListener('click', clearScreen)
