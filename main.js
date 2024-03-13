@@ -1,18 +1,54 @@
-const previousNumber = document.querySelector('previousNumber p')
-const matchSign = document.querySelector('matchSign')
-const currentNumber = document.querySelector('currentNumber')
-const clearButton = document.querySelector('clear')
-const operatorsButtons = document.querySelector('operator')
-const numbersButtons = document.querySelectorAll('number')
-const equalsButton = document.querySelector('equals')
-const calculatorHistory = document.querySelector('caulculator-history')
-const historyBtn = document.querySelector('history-btn')
-const historyItem = document.querySelectorAll('history-item')
+const previousNumber = document.querySelector('.previousNumber p')
+const mathSign = document.querySelector('.mathSign')
+const currentNumber = document.querySelector('.currentNumber')
+const clearButton = document.querySelector('.clear')
+const operatorsButtons = document.querySelectorAll('.operator')
+const numbersButtons = document.querySelectorAll('.number')
+const equalsButton = document.querySelector('.equals')
+const calculatorHistory = document.querySelector('.caulculator-history')
+const historyBtn = document.querySelector('.history-btn')
+const historyItem = document.querySelectorAll('.history-item')
 
 let result = ''
 
-operatorsButtons.forEach(button => button.addEventLuistener('click', operate))
+function displayNumbers() {
+	if (this.textContent === '.' && currentNumber.innerHTML.includes('.')) return
+	if (this.textContent === '.' && currentNumber.innerHTML === '') return (currentNumber.innerHTML = '.0')
+
+	currentNumber.innerHTML += this.textContent
+}
+
+function operate() {
+	if (currentNumber.innerHTML === '' && this.textContent === '-') {
+		currentNumber.innerHTML = '-'
+		return
+	} else if (currentNumber.innerHTML === '') {
+		return
+	}
+	if (mathSign.innerHTML !== '') {
+		showResult()
+	}
+	previousNumber.innerHTML = currentNumber.innerHTML
+	mathSign.innerHTML = this.textContent
+	currentNumber.innerHTML = ''
+}
+
+function showResult() {
+	if (previousNumber.innerHTML === '' || currentNumber.innerHTML === '') return
+}
+
+function clearScreen() {}
+
+function clearHistory() {}
+
+operatorsButtons.forEach(button => button.addEventListener('click', operate))
 
 equalsButton.addEventListener('click', showResult)
 
 clearButton.addEventListener('click', clearScreen)
+
+numbersButtons.forEach(button => {
+	button.addEventListener('click', displayNumbers)
+})
+
+historyBtn.addEventListener('click', clearHistory)
