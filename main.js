@@ -5,7 +5,7 @@ const clearButton = document.querySelector('.clear')
 const operatorsButtons = document.querySelectorAll('.operator')
 const numbersButtons = document.querySelectorAll('.number')
 const equalsButton = document.querySelector('.equals')
-const calculatorHistory = document.querySelector('.caulculator-history')
+const calculatorHistory = document.querySelector('.history')
 const historyBtn = document.querySelector('.history-btn')
 const historyItem = document.querySelectorAll('.history-item')
 
@@ -53,12 +53,36 @@ function showResult() {
 		case '/':
 			result = b / a
 			break
+		case '2^':
+			result = b ** a
+			break
 	}
+
+	addToHistory()
+	historyBtn.classList.add('active')
+	currentNumber.innerHTML = result
+	previousNumber.innerHTML = ''
+	mathSign.innerHTML = ''
 }
 
-function clearScreen() {}
+function addToHistory() {
+	const newHistoryItem = document.createElement('li')
+	newHistoryItem.innerHTML = `${currentNumber.innerHTML} ${mathSign.innerHTML} ${previousNumber.innerHTML} = ${result}`
+	newHistoryItem.classList.add('history-item')
+	calculatorHistory.appendChild(newHistoryItem)
+}
 
-function clearHistory() {}
+function clearScreen() {
+	result = ''
+	currentNumber.innerHTML = ''
+	previousNumber.innerHTML = ''
+	mathSign.innerHTML = ''
+}
+
+function clearHistory() {
+	calculatorHistory.textContent = ''
+	historyBtn.classList.remove('active')
+}
 
 operatorsButtons.forEach(button => button.addEventListener('click', operate))
 

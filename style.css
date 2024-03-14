@@ -108,6 +108,8 @@ button:hover {
 }
 
 .history-item {
+	list-style: none;
 	margin: 5px 0;
 	letter-spacing: 1px;
+	
 }
