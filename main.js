@@ -35,6 +35,25 @@ function operate() {
 
 function showResult() {
 	if (previousNumber.innerHTML === '' || currentNumber.innerHTML === '') return
+
+	let a = Number(currentNumber.innerHTML)
+	let b = Number(previousNumber.innerHTML)
+	let operator = mathSign.innerHTML
+
+	switch (operator) {
+		case '+':
+			result = a + b
+			break
+		case '-':
+			result = b - a
+			break
+		case '*':
+			result = a * b
+			break
+		case '/':
+			result = b / a
+			break
+	}
 }
 
 function clearScreen() {}
