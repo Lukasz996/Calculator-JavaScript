@@ -54,6 +54,11 @@ body {
 	grid-template-rows: repeat(5, 1fr);
 	gap: 2px;
 }
+@media (max-width: 600px) {
+	.panel {
+		height: 100%;
+	}
+}
 
 .panel button {
 	font-size: 25px;
@@ -80,6 +85,12 @@ button:hover {
 	text-align: center;
 	color: #fff;
 	background-color: rgba(20, 27, 27, 0.151);
+}
+
+@media (max-width: 600px) {
+	.calculator-history {
+		display: none;
+	}
 }
 
 .history {
@@ -111,5 +122,4 @@ button:hover {
 	list-style: none;
 	margin: 5px 0;
 	letter-spacing: 1px;
-	
 }
